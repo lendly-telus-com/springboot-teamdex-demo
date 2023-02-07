@@ -30,4 +30,8 @@ public class DemoModel {
 
     private String username;
 
+    public DemoModel orElseThrow(Object object) {
+        return null;
+    }
+
 }

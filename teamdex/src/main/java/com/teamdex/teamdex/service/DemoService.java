@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.teamdex.teamdex.entity.DemoModel;
+import com.teamdex.teamdex.exception.ArtistsNotFoundException;
 import com.teamdex.teamdex.repository.DemoRepository;
 
 @Service
@@ -16,7 +17,7 @@ public class DemoService {
     private DemoRepository demoRepository;
 
     public List<DemoModel> findall() {
-        return this.demoRepository.findAll();
+        return demoRepository.findAll();
     }
 
     public Optional<DemoModel> saveModel(DemoModel demoModel) {
@@ -25,13 +26,15 @@ public class DemoService {
 
     }
 
-    public String deleteArtists(Long id) {
+    public void deleteArtists(Long id) {
         demoRepository.deleteById(id);
-        return "successfully deleted!";
+
     }
 
     public DemoModel updateArtistsById(Long id, DemoModel demoModel) {
-        DemoModel oldArtists = demoRepository.findById(id).get();
+
+        DemoModel oldArtists = demoRepository.findById(id)
+                .orElseThrow(() -> new ArtistsNotFoundException("Artists with id " + id + " not found "));
         oldArtists.setAlbums_recorded(demoModel.getAlbums_recorded());
         oldArtists.setArtist_genre(demoModel.getArtist_genre());
         oldArtists.setArtist_name(demoModel.getArtist_name());
