@@ -16,7 +16,7 @@ public class DemoService {
     private DemoRepository demoRepository;
 
     public List<DemoModel> findall() {
-        return this.demoRepository.findAll();
+        return demoRepository.findAll();
     }
 
     public Optional<DemoModel> saveModel(DemoModel demoModel) {
@@ -25,9 +25,9 @@ public class DemoService {
 
     }
 
-    public String deleteArtists(Long id) {
+    public void deleteArtists(Long id) {
         demoRepository.deleteById(id);
-        return "successfully deleted!";
+
     }
 
     public DemoModel updateArtistsById(Long id, DemoModel demoModel) {

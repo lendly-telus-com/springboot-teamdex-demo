@@ -42,8 +42,8 @@ public class DemoController {
     }
 
     @DeleteMapping("/artists/{id}")
-    public String deleteArtists(@PathVariable(value = "id") Long id) {
-        return demoService.deleteArtists(id) + " artist id # " + id;
+    public void deleteArtists(@PathVariable(value = "id") Long id) {
+        demoService.deleteArtists(id);
     }
 
 }
