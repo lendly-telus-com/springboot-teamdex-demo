@@ -41,4 +41,8 @@ public class DemoModel {
 		return null;
 	}
 
+	public DemoModel(int i, String string, String string2, int j, String string3) {
+		// TODO Auto-generated constructor stub
+	}
+
 }

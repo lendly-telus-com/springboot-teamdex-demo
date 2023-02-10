@@ -32,14 +32,5 @@ public class RestUri {
 		mockMvc.perform(request).andExpect(status().isOk()).andReturn();
 
 	}
-//
-//	@Test
-//	public void Post() throws Exception {
-//		RequestBuilder request = MockMvcRequestBuilders.post("/v1/artists").contentType(MediaType.APPLICATION_JSON)
-//				.content().json({"artist_name": "Beatles", "artist_genre": "60's", "albums_recorded": 5, "username": "JohnLennon@yahoo.com" });
-//
-//		mockMvc.perform(request).andExpect(status().isCreated()).andReturn();
-//
-//	}
 
 }
