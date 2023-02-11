@@ -1,0 +1,126 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Artists API
+  description: Road to Spring Cloud Project
+servers:
+  - url: http://localhost:8080/v1
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+paths:
+  /artists:
+    get:
+      description: Returns a list of all artists
+      responses:
+        '200':
+          description: Successfully returned a list of artists
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  required:
+                    - username
+                  properties:
+                    artist_name:
+                      type: string
+                    artist_genre:
+                      type: string
+                    albums_recorded:
+                      type: integer
+                    username:
+                      type: string
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+  /artist:
+    post:
+      description: Create a new artists
+      responses: 
+        '201':
+          description: Successfully added an artists
+          content: 
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: object
+                  required:
+                    - username
+                  properties: 
+                    artist_name:
+                      type: string
+                    artist_genre:
+                      type: string
+                    albums_recorded:
+                      type: integer
+                    username:
+                      type: string
+        '400':
+          description: Bad Request
+          content: 
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  message:
+                    type: string
+  /artists/id:
+    put:
+      description: Update artists by id
+      responses:
+        '202':
+          description: Success update
+          content: 
+            application/json:
+              schema: 
+                type: array
+                items:
+                  type: object
+                  required:
+                    -  username
+                  properties:
+                    artist_name:
+                      type: string
+                    artists_genre:
+                      type: string
+                    albums_recorded:
+                      type: integer
+                    username:
+                      type: string
+        '404':
+          description: Artists with id  not found
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties: 
+                  message:
+                    type: string
+ 
+
+
+
+                          
+                              
+
+                    
+
+          
+        
+
+          
+      
+
+

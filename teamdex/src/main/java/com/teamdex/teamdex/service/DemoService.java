@@ -13,34 +13,38 @@ import com.teamdex.teamdex.repository.DemoRepository;
 @Service
 public class DemoService {
 
-    @Autowired
-    private DemoRepository demoRepository;
+	@Autowired
+	private DemoRepository demoRepository;
 
-    public List<DemoModel> findall() {
-        return demoRepository.findAll();
-    }
+	public DemoService(DemoRepository mockRepo) {
 
-    public Optional<DemoModel> saveModel(DemoModel demoModel) {
-        demoRepository.save(demoModel);
-        return demoRepository.findById(demoModel.getId());
+	}
 
-    }
+	public List<DemoModel> findall() {
+		return demoRepository.findAll();
+	}
 
-    public void deleteArtists(Long id) {
-        demoRepository.deleteById(id);
+	public Optional<DemoModel> saveModel(DemoModel demoModel) {
+		demoRepository.save(demoModel);
+		return demoRepository.findById(demoModel.getId());
 
-    }
+	}
 
-    public DemoModel updateArtistsById(Long id, DemoModel demoModel) {
+	public void deleteArtists(Long id) {
+		demoRepository.deleteById(id);
 
-        DemoModel oldArtists = demoRepository.findById(id)
-                .orElseThrow(() -> new ArtistsNotFoundException("Artists with id " + id + " not found "));
-        oldArtists.setAlbums_recorded(demoModel.getAlbums_recorded());
-        oldArtists.setArtist_genre(demoModel.getArtist_genre());
-        oldArtists.setArtist_name(demoModel.getArtist_name());
-        oldArtists.setUsername(demoModel.getUsername());
-        demoRepository.save(oldArtists);
-        return oldArtists;
-    }
+	}
+
+	public DemoModel updateArtistsById(Long id, DemoModel demoModel) {
+
+		DemoModel oldArtists = demoRepository.findById(id)
+				.orElseThrow(() -> new ArtistsNotFoundException("Artists with id " + id + " not found "));
+		oldArtists.setAlbums_recorded(demoModel.getAlbums_recorded());
+		oldArtists.setArtist_genre(demoModel.getArtist_genre());
+		oldArtists.setArtist_name(demoModel.getArtist_name());
+		oldArtists.setUsername(demoModel.getUsername());
+		demoRepository.save(oldArtists);
+		return oldArtists;
+	}
 
 }

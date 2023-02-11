@@ -1,5 +1,7 @@
 package com.teamdex.teamdex.entity;
 
+import org.springframework.http.MediaType;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,24 +16,33 @@ import lombok.Data;
 @Table
 public class DemoModel {
 
-    public DemoModel() {
+	public DemoModel() {
 
-    }
+	}
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
-    private String artist_name;
+	private String artist_name;
 
-    private String artist_genre;
+	private String artist_genre;
 
-    private int albums_recorded;
+	private int albums_recorded;
 
-    private String username;
+	private String username;
 
-    public DemoModel orElseThrow(Object object) {
-        return null;
-    }
+	public DemoModel orElseThrow(Object object) {
+		return null;
+	}
+
+	public DemoModel accept(MediaType applicationJsonUtf8) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public DemoModel(int i, String string, String string2, int j, String string3) {
+		// TODO Auto-generated constructor stub
+	}
 
 }

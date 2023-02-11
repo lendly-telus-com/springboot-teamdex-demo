@@ -1,0 +1,1 @@
+Insert into values("Beatles","60's",10,"JohnLennon@yahoo.com")
