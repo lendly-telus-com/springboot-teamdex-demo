@@ -1,7 +1,6 @@
 package com.teamdex.teamdex.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,10 +23,10 @@ public class DemoService {
 		return demoRepository.findAll();
 	}
 
-	public Optional<DemoModel> saveModel(DemoModel demoModel) {
+	public DemoModel saveModel(DemoModel demoModel) {
 		demoRepository.save(demoModel);
-		return demoRepository.findById(demoModel.getId());
-
+		return demoRepository.findById(demoModel.getId()).orElseThrow(
+				() -> new ArtistsNotFoundException("Artists with id " + demoModel.getId() + " not found "));
 	}
 
 	public void deleteArtists(Long id) {
